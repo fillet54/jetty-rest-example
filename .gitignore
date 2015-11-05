@@ -1,0 +1,7 @@
+workbench.xmi
+.vagrant/
+target/
+
+.classpath
+.project
+.settings/
