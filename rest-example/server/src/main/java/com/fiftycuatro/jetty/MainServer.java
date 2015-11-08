@@ -1,6 +1,7 @@
 package com.fiftycuatro.jetty;
 
 import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.glassfish.jersey.jackson.JacksonFeature;
@@ -18,12 +19,18 @@ public class MainServer
  
         Server jettyServer = new Server(8080);
         jettyServer.setHandler(context);
- 
+
+        DefaultServlet defaultServlet = new DefaultServlet();
+        ServletHolder resourceServlet = new ServletHolder("default", defaultServlet);
+        String webclientPath = MainServer.class.getResource( "/com/fiftycuatro/webclient" ).toExternalForm(); 
+        resourceServlet.setInitParameter("resourceBase", webclientPath);
+
         ServletHolder jerseyServlet = new ServletHolder(new  
              org.glassfish.jersey.servlet.ServletContainer(application));
         jerseyServlet.setInitOrder(0);
- 
-        context.addServlet(jerseyServlet, "/*");
+
+        context.addServlet(resourceServlet, "/*");
+        context.addServlet(jerseyServlet, "/test/*");
 
         try {
             jettyServer.start();

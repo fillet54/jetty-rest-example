@@ -6,7 +6,6 @@ sudo add-apt-repository ppa:webupd8team/java  -y
 # update apt
 sudo apt-get update
 
-
 # install java
 JAVA_VERSION=7
 
@@ -25,5 +24,6 @@ sudo apt-get install maven -y
 echo "export JAVA_HOME=$JAVA_HOME" >> /etc/bash.bashrc
 echo "export PATH=$KARAF_HOME/bin:$PATH" >> /etc/bash.bashrc
 
-
-
+# Install NPM
+curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+sudo apt-get install -y nodejs
