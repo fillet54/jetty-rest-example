@@ -1,0 +1,14 @@
+<section>
+   <form class="col-md-4 col-md-offset-4">
+      <h1>Select Data To See</h1>
+      <div class="form-group">
+        <label for="primaryIdSelect">Primary ID</label>
+        <select id="primaryIdSelect" data-bind="selectize: primaryIds, value: selectedPrimaryId"></select>
+      </div>
+      <div class="form-group">
+        <label for="secondaryIdSelect">Secondary ID</label>
+        <select data-bind="selectize: secondaryIds, value: selectedSecondaryId, options: {plugins: ['remove_button']}" multiple></select>
+    </div>
+    <button class="btn btn-info pull-right">Get Rows</button>
+    </form>
+</section>
