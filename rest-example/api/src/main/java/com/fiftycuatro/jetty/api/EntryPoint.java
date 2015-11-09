@@ -10,5 +10,5 @@ public interface EntryPoint {
    @GET
    @Path("test")
    @Produces(MediaType.APPLICATION_JSON)
-   public String test(); 
+   public SampleDTO test(); 
 }
